@@ -1,4 +1,3 @@
-## Lab Alumni
 {% comment %}
 Create an array of members with their final enddate for proper sorting.
 For members with multiple enddates (arrays), we use the last enddate.
@@ -26,6 +25,8 @@ This ensures alumni are sorted by their most recent end date.
 {% endfor %}
 
 {% assign sorted_members = members_with_final_date | sort | reverse %}
+{% if sorted_members.size > 0 %}
+## Lab Alumni
 {% for member_entry in sorted_members %}
   {% assign member_parts = member_entry | split: "|" %}
   {% assign member_index = member_parts[1] | plus: 0 %}
@@ -84,6 +85,11 @@ Subsequently: {{member.subsequent}} <br>
 <a href= "https://twitter.com/{{member.twitter}}"> @{{member.twitter}} </a> <br>
 {% endif %}
 
+{% if member.bsky %}
+<a href="https://bsky.app/"><img class="inline-block mem-icon" src="/static/img/logo/bsky_logo.svg"></a>
+<a href= "https://bsky.app/profile/{{member.bsky}}"> {{member.bsky}} </a> <br>
+{% endif %}
+
 {% if member.github %}
 <a href="https://github.com"><img class="inline-block mem-icon" src="/static/img/logo/github_logo.svg"></a>
 <a href= "https://github.com/{{member.github}}"> {{member.github}} </a> <br>
@@ -91,9 +97,8 @@ Subsequently: {{member.subsequent}} <br>
 </p>
 </div>
 {% endfor %}
+{% endif %}
 
-<br>
-## Graduate Students
 {% comment %}Sort undergraduate interns by final enddate{% endcomment %}
 {% assign undergrads_with_final_date = "" | split: "" %}
 {% for undergraduate in site.members %}
@@ -110,6 +115,9 @@ Subsequently: {{member.subsequent}} <br>
 {% endfor %}
 
 {% assign sorted_undergrads = undergrads_with_final_date | sort | reverse %}
+{% if sorted_undergrads.size > 0 %}
+<br>
+## Graduate Students
 {% for undergrad_entry in sorted_undergrads %}
   {% assign undergrad_parts = undergrad_entry | split: "|" %}
   {% assign undergrad_index = undergrad_parts[1] | plus: 0 %}
@@ -137,10 +145,8 @@ Subsequently: {{undergraduate.subsequent}}<br>
 {% endif %}
 </p>
 </div> {% endfor %}
+{% endif %}
 
-
-<br>
-## Undergraduate Students
 {% comment %}Sort high school interns by final enddate{% endcomment %}
 {% assign students_with_final_date = "" | split: "" %}
 {% for student in site.members %}
@@ -155,6 +161,9 @@ Subsequently: {{undergraduate.subsequent}}<br>
 {% endfor %}
 
 {% assign sorted_students = students_with_final_date | sort | reverse %}
+{% if sorted_students.size > 0 %}
+<br>
+## Undergraduate Students
 {% for student_entry in sorted_students %}
   {% assign student_parts = student_entry | split: "|" %}
   {% assign student_index = student_parts[1] | plus: 0 %}
@@ -181,10 +190,8 @@ Subsequently: {{student.subsequent}}<br>
 {% endif %}
 </p>
 </div> {% endfor %}
+{% endif %}
 
-
-<br>
-## Lab Visitors
 {% comment %}Separate current and past visitors, then sort past visitors by final enddate{% endcomment %}
 {% assign current_visitors = "" | split: "" %}
 {% assign visitors_with_final_date = "" | split: "" %}
@@ -213,6 +220,9 @@ Subsequently: {{student.subsequent}}<br>
   {% assign past_visitors = past_visitors | push: visitor %}
 {% endfor %}
 
+{% if current_visitors.size > 0 or past_visitors.size > 0 %}
+<br>
+## Lab Visitors
 {% comment %}Display current visitors first{% endcomment %}
 {% for visitor in current_visitors %}
 
@@ -272,3 +282,4 @@ Subsequently: {{student.subsequent}}<br>
 {% endif %}
 </p>
 </div> {% endfor %}
+{% endif %}
