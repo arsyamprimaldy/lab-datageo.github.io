@@ -6,12 +6,12 @@ image: /static/img/members/apoji.jpg
 # altimage: /static/img/members/Fraser_pb.jpg
 position: Principal Investigator
 #current:
-# pronouns: he/him/his
+interest: AI/ML
 email: dayu.aoji (at) itb.ac.id
 scholar: 1ebiIaIAAAAJ
 # nih: "james.fraser.1"
 # website: https://fraserlab.com
-# UCSF: james.fraser
+# FTSL: daa
 #twitter: fraser_lab
 linkedin: dayuapoji
 # bsky: "fraserlab.com"
