@@ -1,124 +1,28 @@
 # =============================================================================
-# _data/research.yml  —  Funded Projects & Student Research content
+# _data/research.yml
 # =============================================================================
+#
+# NOTE: Funded Projects and Student Research are now managed as individual
+#       Markdown files in dedicated collections — NOT in this file.
 #
 # HOW TO UPDATE RESEARCH CONTENT
 # ─────────────────────────────────────────────────────────────────────────────
+#
 # RESEARCH THEME CARDS
-#   Each card on the Research page is its own Markdown file in:
+#   Each card is its own Markdown file in:
 #     _research_themes/
-#   To add or edit a theme card, create or edit a file there.
 #   Copy _research_themes/_template.md to get started.
 #
-# FUNDED PROJECTS and STUDENT RESEARCH
-#   These sections are still managed in this file (see below).
-#   The file has two sections:
-#     1. funded_projects  – Grant / collaboration cards
-#     2. student_research – S1 / S2 / S3 thesis table rows
+# FUNDED RESEARCH PROJECTS
+#   Each project is its own Markdown file in:
+#     _funded_projects/
+#   Copy _funded_projects/_template.md to get started.
+#   Cards appear in the order set by the `order` front-matter field.
 #
-# Quick rules
-#   • Keep text inside double quotes if it contains special characters (& : –)
-#   • Multi-line descriptions use the YAML block scalar (>) — indent content by
-#     at least two extra spaces after the key.
-#   • Order matters: entries appear on the page in the order listed here.
-#   • To REMOVE an entry, delete its entire block (from the leading '-' to the
-#     blank line before the next '-').
-#   • To ADD an entry, copy one of the template blocks below each section and
-#     fill in the fields.
+# STUDENT RESEARCH
+#   Each student entry is its own Markdown file in:
+#     _student_research/
+#   Copy _student_research/_template.md to get started.
+#   Cards appear in the order set by the `order` front-matter field.
 #
 # =============================================================================
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 1 — Funded Research Projects
-# Each entry renders as a card below the themes section.
-#
-# TEMPLATE — copy, paste below the last entry, and fill in:
-#
-#   - title: "Full Project Title"
-#     type: "Funded Research"        # label shown on the right badge
-#     funder: "Funding Agency Name"  # required
-#     scheme: "Grant Scheme Name"    # optional (e.g. Penelitian Dasar)
-#     period: "2025–2026"            # required
-#     amount: "Rp 250,000,000"       # optional — omit if confidential
-#     investigators:                 # optional — list as many roles as needed
-#       - role: "Principal Investigator"
-#         name: "Dr. Full Name"
-#       - role: "Co-Investigator"
-#         name: "Dr. Full Name"
-#     description: >
-#       Two to four sentences describing the project goals and outcomes.
-#     keywords:
-#       - keyword one
-#       - keyword two
-# ─────────────────────────────────────────────────────────────────────────────
-funded_projects:
-
-  - title: "Development of a Data-Driven Framework for Regional Liquefaction Susceptibility Mapping"
-    type: "Funded Research"
-    funder: "Ministry of Education, Culture, Research and Technology (Kemdikbudristek) – DRTPM"
-    scheme: "Penelitian Dasar (PD)"
-    period: "2025–2026"
-    amount: "Rp 250,000,000"
-    investigators:
-      - role: "Principal Investigator"
-        name: "[PI Name]"
-      - role: "Co-Investigator"
-        name: "[Co-I Name]"
-    description: >
-      This project develops an integrated machine-learning and geostatistical framework for
-      mapping regional liquefaction susceptibility using publicly available CPT and geospatial
-      datasets. The outcomes include validated susceptibility maps and an open-source processing
-      pipeline for rapid regional assessments.
-    keywords:
-      - liquefaction
-      - machine learning
-      - regional mapping
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 2 — Student Research
-# Each entry renders as one row in the table at the bottom of the page.
-#
-# level options:   S1 (Undergraduate Thesis)
-#                  S2 (Master's Thesis)
-#                  S3 (Doctoral Research)
-#
-# status options:  Ongoing      → shown as a green badge
-#                  Completed    → shown as a grey badge
-#                  any other text is shown as plain text
-#
-# TEMPLATE — copy, paste below the last entry, and fill in:
-#
-#   - title: "Full Thesis / Project Title"
-#     level: "S2 (Master's Thesis)"    # S1 | S2 | S3 — see options above
-#     student: "Student Full Name"
-#     supervisor: "Supervisor Full Name"
-#     year: "2025"                      # start year or expected graduation year
-#     status: "Ongoing"                 # Ongoing | Completed
-#     keywords:                         # optional — shown as small badges
-#       - keyword one
-#       - keyword two
-# ─────────────────────────────────────────────────────────────────────────────
-student_research:
-
-  - title: "Probabilistic Slope Stability Analysis Using Monte Carlo Simulation for Highway Embankments"
-    level: "S2 (Master's Thesis)"
-    student: "[Student Name]"
-    supervisor: "[Supervisor Name]"
-    year: "2025"
-    status: "Ongoing"
-    keywords:
-      - slope stability
-      - probabilistic analysis
-      - embankment
-
-  - title: "Machine Learning-Based Soil Classification from CPT Data"
-    level: "S1 (Undergraduate Thesis)"
-    student: "[Student Name]"
-    supervisor: "[Supervisor Name]"
-    year: "2025"
-    status: "Ongoing"
-    keywords:
-      - CPT
-      - machine learning
-      - soil classification

@@ -62,7 +62,9 @@ assessment).
 
 <p class="text-muted">Grants, institutional funding, and external collaborations supporting our research.</p>
 
-{% for project in site.data.research.funded_projects %}
+{% assign sorted_projects = site.funded_projects | sort: "order" %}
+{% for project in sorted_projects %}
+  {% unless project.path contains "_template" %}
 <div class="card mb-4 shadow-sm">
   <div class="card-body">
     <div class="row">
@@ -74,7 +76,7 @@ assessment).
           &ensp;|&ensp;<strong>Period:</strong> {{ project.period }}
           {% if project.amount %}&ensp;|&ensp;<strong>Budget:</strong> {{ project.amount }}{% endif %}
         </p>
-        <p class="card-text" style="font-size:0.92rem;">{{ project.description }}</p>
+        <p class="card-text" style="font-size:0.92rem;">{{ project.content | strip_html }}</p>
         {% if project.investigators %}
         <p class="mb-1" style="font-size:0.88rem;">
           {% for inv in project.investigators %}
@@ -98,6 +100,7 @@ assessment).
     </div>
   </div>
 </div>
+  {% endunless %}
 {% endfor %}
 
 <hr>
@@ -106,43 +109,37 @@ assessment).
 
 <p class="text-muted">Ongoing and recent thesis and research projects by our graduate and undergraduate students (S1 / S2 / S3).</p>
 
-<table class="table table-hover" style="font-size:0.92rem;">
-  <thead class="thead-light">
-    <tr>
-      <th>Title</th>
-      <th>Level</th>
-      <th>Student</th>
-      <th>Supervisor</th>
-      <th>Year</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for sr in site.data.research.student_research %}
-    <tr>
-      <td>
-        {{ sr.title }}
-        {% if sr.keywords %}
-        <br>
+<div class="row">
+{% assign sorted_sr = site.student_research | sort: "order" %}
+{% for sr in sorted_sr %}
+  {% unless sr.path contains "_template" %}
+<div class="col-sm-6 col-lg-4 mb-4">
+  <div class="card h-100 shadow-sm">
+    <div class="card-body d-flex flex-column">
+      <h6 class="card-title" style="font-size:0.92rem;">{{ sr.title }}</h6>
+      <div class="mb-2">
+        <span class="badge badge-info" style="font-size:0.78rem;">{{ sr.level }}</span>
+        {% if sr.status == "Ongoing" %}
+        <span class="badge badge-success" style="font-size:0.78rem;">{{ sr.status }}</span>
+        {% else %}
+        <span class="badge badge-secondary" style="font-size:0.78rem;">{{ sr.status }}</span>
+        {% endif %}
+      </div>
+      <p class="card-text mb-2" style="font-size:0.85rem;">
+        <strong>Student:</strong> {{ sr.student }}<br>
+        <strong>Supervisor:</strong> {{ sr.supervisor }}<br>
+        <strong>Year:</strong> {{ sr.year }}
+      </p>
+      {% if sr.keywords %}
+      <div class="mt-auto">
         {% for kw in sr.keywords %}
         <span class="badge badge-secondary" style="font-size:0.75rem; margin-top:3px;">{{ kw }}</span>
         {% endfor %}
-        {% endif %}
-      </td>
-      <td><span class="badge badge-info" style="font-size:0.8rem;">{{ sr.level }}</span></td>
-      <td>{{ sr.student }}</td>
-      <td>{{ sr.supervisor }}</td>
-      <td>{{ sr.year }}</td>
-      <td>
-        {% if sr.status == "Ongoing" %}
-        <span class="badge badge-success">{{ sr.status }}</span>
-        {% elsif sr.status == "Completed" %}
-        <span class="badge badge-secondary">{{ sr.status }}</span>
-        {% else %}
-        {{ sr.status }}
-        {% endif %}
-      </td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+  {% endunless %}
+{% endfor %}
+</div>
