@@ -10,9 +10,9 @@
   link: "/publications"
   group: publications
 
-- name: reviews
-  link: "/reviews"
-  group: reviews
+- name: projects
+  link: "/projects"
+  group: projects
 
 - name: members
   link: "/members"
