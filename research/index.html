@@ -27,7 +27,9 @@ assessment).
 <h2>Research Themes</h2>
 
 <div class="row">
-{% for theme in site.data.research.themes %}
+{% assign sorted_themes = site.research_themes | sort: "order" %}
+{% for theme in sorted_themes %}
+  {% unless theme.path contains "_template" %}
 <div class="col-md-6 mb-4">
   <div class="card h-100 shadow-sm">
     {% if theme.image %}
@@ -36,7 +38,7 @@ assessment).
     <div class="card-body">
       <span class="badge badge-primary mb-2" style="background-color:#052049;">{{ theme.scale }}</span>
       <h5 class="card-title">{{ theme.title }}</h5>
-      <p class="card-text text-muted" style="font-size:0.92rem;">{{ theme.description }}</p>
+      <p class="card-text text-muted" style="font-size:0.92rem;">{{ theme.content | strip_html }}</p>
       {% if theme.keywords %}
       <div>
         {% for kw in theme.keywords %}
@@ -44,12 +46,13 @@ assessment).
         {% endfor %}
       </div>
       {% endif %}
-      {% if theme.publication_link %}
+      {% if theme.publication_link and theme.publication_link != "" %}
       <a href="{{ theme.publication_link }}" class="btn btn-sm btn-outline-primary mt-3">Related Publications &rarr;</a>
       {% endif %}
     </div>
   </div>
 </div>
+  {% endunless %}
 {% endfor %}
 </div>
 
