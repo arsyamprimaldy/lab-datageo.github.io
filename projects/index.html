@@ -44,10 +44,12 @@ group: projects
 
 {% for project in sorted_projects %}
   {% unless project.path contains "_template" %}
-  <div class="project-card"
-       data-keywords="{{ project.keywords | join: ',' | downcase }}"
-       data-service="{{ project.service_type }}"
-       data-sector="{{ project.market_sector }}">
+  <a href="{{ project.url }}" class="text-decoration-none text-dark project-card-link"
+     aria-label="View project: {{ project.title }}"
+     data-keywords="{{ project.keywords | join: ',' | downcase }}"
+     data-service="{{ project.service_type }}"
+     data-sector="{{ project.market_sector }}">
+  <div class="project-card">
     <hr>
     <div class="row" style="padding-top: 10px;">
       {% if project.image %}
@@ -106,9 +108,13 @@ group: projects
         {% if project.date %}
         <small class="text-muted">{{ project.date | date: "%B %Y" }}</small>
         {% endif %}
+        <div class="mt-2">
+          <small class="text-primary" style="font-size:0.85rem;">View details &rarr;</small>
+        </div>
       </div>
     </div>
   </div>
+  </a>
   {% endunless %}
 {% endfor %}
 
@@ -125,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- helpers ---- */
   function getCards() {
-    return Array.from(document.querySelectorAll('.project-card'));
+    return Array.from(document.querySelectorAll('.project-card-link'));
   }
 
   function applyFilters() {
@@ -203,5 +209,15 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 .project-card {
   margin-bottom: 8px;
+  transition: box-shadow 0.2s;
+}
+.project-card-link {
+  display: block;
+}
+.project-card-link:hover .project-card {
+  box-shadow: 0 4px 16px rgba(5, 32, 73, 0.18);
+}
+.project-card-link:hover h5 {
+  color: #052049;
 }
 </style>
