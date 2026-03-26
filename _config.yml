@@ -54,4 +54,4 @@ collections:
         funded_projects:
                 output: false
         student_research:
-                output: false
+                output: true

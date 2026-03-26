@@ -1,4 +1,13 @@
 
+.sr-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.sr-card-link:hover .sr-card {
+  box-shadow: 0 4px 16px rgba(5, 32, 73, 0.18) !important;
+}
+
 @media (min-width: 992px) {
    .navbar-collapse {
        display: none !important;

@@ -1,0 +1,126 @@
+{% include header.html %}
+
+<div class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+
+      <!-- Level badge + Back link -->
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <span class="badge badge-info" style="font-size:0.9rem; padding:6px 12px;">
+          {{ page.level }}
+        </span>
+        <a href="/research" class="btn btn-sm btn-outline-secondary">&larr; Back to Research</a>
+      </div>
+
+      <!-- Thesis title -->
+      <h2 class="mb-1" style="font-weight:700;">{{ page.title }}</h2>
+
+      <!-- Status badge -->
+      <div class="mb-3">
+        {% if page.status == "Ongoing" %}
+        <span class="badge badge-success" style="font-size:0.82rem;">{{ page.status }}</span>
+        {% else %}
+        <span class="badge badge-secondary" style="font-size:0.82rem;">{{ page.status }}</span>
+        {% endif %}
+      </div>
+
+      <hr>
+
+      <!-- Key metadata -->
+      <div class="mb-4">
+        <table class="table table-sm table-borderless" style="font-size:0.95rem; max-width:500px;">
+          <tbody>
+            <tr>
+              <th scope="row" style="width:160px; color:#555;">Student</th>
+              <td>{{ page.student }}</td>
+            </tr>
+            <tr>
+              <th scope="row" style="color:#555;">Supervisor(s)</th>
+              <td>{{ page.supervisor }}</td>
+            </tr>
+            <tr>
+              <th scope="row" style="color:#555;">Year</th>
+              <td>{{ page.year }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Keywords -->
+      {% if page.keywords %}
+      <div class="mb-4">
+        {% for kw in page.keywords %}
+        <span class="badge badge-secondary" style="margin-right:4px; font-size:0.8rem;">{{ kw }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <hr>
+
+      <!-- Abstract -->
+      <h4 class="mt-4 mb-3" style="color:#052049;">Brief Abstract</h4>
+
+      {% if page.abstract_background %}
+      <div class="mb-3">
+        <h6 style="font-weight:700; color:#333;">Background</h6>
+        <p style="font-size:0.95rem;">{{ page.abstract_background }}</p>
+      </div>
+      {% endif %}
+
+      {% if page.abstract_objective %}
+      <div class="mb-3">
+        <h6 style="font-weight:700; color:#333;">Objective</h6>
+        <p style="font-size:0.95rem;">{{ page.abstract_objective }}</p>
+      </div>
+      {% endif %}
+
+      {% if page.abstract_methodology %}
+      <div class="mb-3">
+        <h6 style="font-weight:700; color:#333;">Methodology</h6>
+        <p style="font-size:0.95rem;">{{ page.abstract_methodology }}</p>
+      </div>
+      {% endif %}
+
+      {% if page.abstract_contribution %}
+      <div class="mb-3">
+        <h6 style="font-weight:700; color:#333;">Key Contribution</h6>
+        <p style="font-size:0.95rem;">{{ page.abstract_contribution }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Figure -->
+      {% if page.figure %}
+      <hr>
+      <div class="mt-4 text-center">
+        <h5 style="color:#052049;">Key Figure</h5>
+        {% assign fig_ext = page.figure | split: "." | last | downcase %}
+        {% if fig_ext == "gif" or fig_ext == "mp4" or fig_ext == "webm" %}
+          {% if fig_ext == "mp4" or fig_ext == "webm" %}
+          <video class="img-fluid rounded shadow-sm" style="max-height:420px;" autoplay loop muted playsinline>
+            <source src="{{ page.figure }}" type="video/{{ fig_ext }}">
+          </video>
+          {% else %}
+          <img src="{{ page.figure }}" class="img-fluid rounded shadow-sm" style="max-height:420px;" alt="Key Figure">
+          {% endif %}
+        {% else %}
+        <img src="{{ page.figure }}" class="img-fluid rounded shadow-sm" style="max-height:420px;" alt="Key Figure">
+        {% endif %}
+        {% if page.figure_caption %}
+        <p class="text-muted mt-2" style="font-size:0.85rem;">{{ page.figure_caption }}</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- Markdown body (optional additional content) -->
+      {% if content %}
+      <hr>
+      <div class="mt-4" style="font-size:0.95rem;">
+        {{ content }}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% include footer.html %}
