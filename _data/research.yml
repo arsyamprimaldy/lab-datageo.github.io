@@ -1,6 +1,62 @@
-# Research data for the Lab Data dan Komputasi Geoteknik
+# =============================================================================
+# _data/research.yml  —  Research page content
+# =============================================================================
+#
+# HOW TO UPDATE RESEARCH CONTENT
+# ─────────────────────────────────────────────────────────────────────────────
+# This is the ONLY file you need to edit to change anything on the Research
+# page (/research/).  The page template (research/index.html) reads this file
+# automatically — no HTML editing is required.
+#
+# The file has three sections:
+#   1. themes          – Research theme cards shown at the top of the page
+#   2. funded_projects – Grant / collaboration cards
+#   3. student_research – S1 / S2 / S3 thesis table rows
+#
+# Quick rules
+#   • Keep text inside double quotes if it contains special characters (& : –)
+#   • Multi-line descriptions use the YAML block scalar (>) — indent content by
+#     at least two extra spaces after the key.
+#   • Order matters: entries appear on the page in the order listed here.
+#   • To REMOVE an entry, delete its entire block (from the leading '-' to the
+#     blank line before the next '-').
+#   • To ADD an entry, copy one of the template blocks below each section and
+#     fill in the fields.
+#
+# IMAGES
+#   • Save image files to:  static/img/research/
+#   • Supported formats:    .jpg  .png  .svg  .webp
+#   • Recommended size:     1200 × 600 px (landscape), ≤ 300 KB
+#   • Reference the file as:  image: "/static/img/research/your-file.png"
+#   • Leave the image field out (or blank) if you have no image yet — the card
+#     will still render without one.
+#
+# LINKING TO PUBLICATIONS
+#   • Add  publication_link: "/publications#anchor"  to any theme entry and
+#     a "Related Publications →" button will appear on that card automatically.
+#
+# =============================================================================
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 1 — Research Themes
+# Each entry renders as a card in the 2-column grid at the top of the page.
+#
+# TEMPLATE — copy, paste below the last entry, and fill in:
+#
+#   - title: "Theme Title"
+#     scale: "Micro scale"          # e.g. Micro scale | Meso scale | Macro / Regional scale
+#     description: >
+#       One to three sentences describing the theme. Indent the text two
+#       extra spaces. The '>' means line-breaks inside become spaces.
+#     image: "/static/img/research/your-image.png"   # optional
+#     publication_link: "/publications"               # optional
+#     keywords:
+#       - keyword one
+#       - keyword two
+# ─────────────────────────────────────────────────────────────────────────────
 themes:
+
   - title: "Constitutive Modeling of Granular Materials"
     scale: "Micro scale"
     description: >
@@ -57,7 +113,32 @@ themes:
       - risk assessment
       - remote sensing
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 2 — Funded Research Projects
+# Each entry renders as a card below the themes section.
+#
+# TEMPLATE — copy, paste below the last entry, and fill in:
+#
+#   - title: "Full Project Title"
+#     type: "Funded Research"        # label shown on the right badge
+#     funder: "Funding Agency Name"  # required
+#     scheme: "Grant Scheme Name"    # optional (e.g. Penelitian Dasar)
+#     period: "2025–2026"            # required
+#     amount: "Rp 250,000,000"       # optional — omit if confidential
+#     investigators:                 # optional — list as many roles as needed
+#       - role: "Principal Investigator"
+#         name: "Dr. Full Name"
+#       - role: "Co-Investigator"
+#         name: "Dr. Full Name"
+#     description: >
+#       Two to four sentences describing the project goals and outcomes.
+#     keywords:
+#       - keyword one
+#       - keyword two
+# ─────────────────────────────────────────────────────────────────────────────
 funded_projects:
+
   - title: "Development of a Data-Driven Framework for Regional Liquefaction Susceptibility Mapping"
     type: "Funded Research"
     funder: "Ministry of Education, Culture, Research and Technology (Kemdikbudristek) – DRTPM"
@@ -79,18 +160,39 @@ funded_projects:
       - machine learning
       - regional mapping
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 3 — Student Research
+# Each entry renders as one row in the table at the bottom of the page.
+#
+# level options:   S1 (Undergraduate Thesis)
+#                  S2 (Master's Thesis)
+#                  S3 (Doctoral Research)
+#
+# status options:  Ongoing      → shown as a green badge
+#                  Completed    → shown as a grey badge
+#                  any other text is shown as plain text
+#
+# TEMPLATE — copy, paste below the last entry, and fill in:
+#
+#   - title: "Full Thesis / Project Title"
+#     level: "S2 (Master's Thesis)"    # S1 | S2 | S3 — see options above
+#     student: "Student Full Name"
+#     supervisor: "Supervisor Full Name"
+#     year: "2025"                      # start year or expected graduation year
+#     status: "Ongoing"                 # Ongoing | Completed
+#     keywords:                         # optional — shown as small badges
+#       - keyword one
+#       - keyword two
+# ─────────────────────────────────────────────────────────────────────────────
 student_research:
+
   - title: "Probabilistic Slope Stability Analysis Using Monte Carlo Simulation for Highway Embankments"
     level: "S2 (Master's Thesis)"
     student: "[Student Name]"
     supervisor: "[Supervisor Name]"
     year: "2025"
     status: "Ongoing"
-    description: >
-      This thesis investigates the influence of soil parameter uncertainty on the reliability of
-      embankment slopes along national highway corridors. A Monte Carlo–based probabilistic
-      framework is implemented within a commercial FEM platform and validated against deterministic
-      limit-equilibrium results from field case studies.
     keywords:
       - slope stability
       - probabilistic analysis
@@ -102,11 +204,6 @@ student_research:
     supervisor: "[Supervisor Name]"
     year: "2025"
     status: "Ongoing"
-    description: >
-      This project applies supervised machine-learning classifiers (Random Forest, Gradient
-      Boosting) to automated soil behavior type classification using CPT data. The trained models
-      are benchmarked against established CPT-based classification charts and evaluated on
-      independent Indonesian test sites.
     keywords:
       - CPT
       - machine learning
