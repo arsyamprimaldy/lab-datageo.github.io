@@ -1,0 +1,207 @@
+---
+title: Projects
+layout: default
+group: projects
+---
+
+<h1>Consulting Projects</h1>
+
+<p>
+  A portfolio of selected consulting projects undertaken by the Principal, summarised by client,
+  scope, role, and key outcomes. Use the filters below to browse projects by keyword, or toggle
+  the grouping to organise projects by service type or market sector.
+</p>
+
+<!-- ===== Grouping Toggle ===== -->
+<div class="project-controls" style="margin-bottom: 16px;">
+  <strong>Group by:</strong>
+  <button class="btn btn-sm btn-outline-primary group-btn active" data-group="none">None</button>
+  <button class="btn btn-sm btn-outline-primary group-btn" data-group="service_type">Service Type</button>
+  <button class="btn btn-sm btn-outline-primary group-btn" data-group="market_sector">Market Sector</button>
+</div>
+
+<!-- ===== Keyword Filter ===== -->
+<div class="project-controls" style="margin-bottom: 24px;">
+  <strong>Filter by keyword:</strong><br>
+  <button class="btn btn-sm btn-outline-secondary keyword-btn active" data-keyword="all" style="margin-top:6px;">All</button>
+  {% assign all_keywords = "" | split: "" %}
+  {% for project in site.projects %}
+    {% unless project.path contains "_template" %}
+      {% if project.keywords %}
+        {% assign all_keywords = all_keywords | concat: project.keywords %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+  {% assign unique_keywords = all_keywords | uniq | sort %}
+  {% for kw in unique_keywords %}
+  <button class="btn btn-sm btn-outline-secondary keyword-btn" data-keyword="{{ kw }}" style="margin-top:6px;">{{ kw }}</button>
+  {% endfor %}
+</div>
+
+<!-- ===== Projects List ===== -->
+<div id="projects-container">
+{% assign sorted_projects = site.projects | sort: "date" | reverse %}
+
+{% for project in sorted_projects %}
+  {% unless project.path contains "_template" %}
+  <div class="project-card"
+       data-keywords="{{ project.keywords | join: ',' | downcase }}"
+       data-service="{{ project.service_type }}"
+       data-sector="{{ project.market_sector }}">
+    <hr>
+    <div class="row" style="padding-top: 10px;">
+      {% if project.image %}
+      <div class="col-md-3 mb-3">
+        <img class="img-fluid" src="{{ project.image }}" alt="Project image for {{ project.title }}" style="max-height:180px; object-fit:cover;" loading="lazy" decoding="async">
+      </div>
+      {% endif %}
+      <div class="{% if project.image %}col-md-9{% else %}col-md-12{% endif %}">
+        <h5>{{ project.title }}</h5>
+        <table class="table table-sm table-borderless" style="max-width: 700px;">
+          <tbody>
+            <tr>
+              <th scope="row" style="width:140px;">Client</th>
+              <td>{{ project.client }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Service Type</th>
+              <td>{{ project.service_type }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Market Sector</th>
+              <td>{{ project.market_sector }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Role</th>
+              <td>{{ project.role }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Scope</th>
+              <td>{{ project.scope }}</td>
+            </tr>
+            {% if project.key_outcomes %}
+            <tr>
+              <th scope="row">Key Outcomes</th>
+              <td>
+                <ul style="margin-bottom:0; padding-left:18px;">
+                  {% for outcome in project.key_outcomes %}
+                  <li>{{ outcome }}</li>
+                  {% endfor %}
+                </ul>
+              </td>
+            </tr>
+            {% endif %}
+            {% if project.keywords %}
+            <tr>
+              <th scope="row">Keywords</th>
+              <td>
+                {% for kw in project.keywords %}
+                <span class="badge badge-secondary" style="margin-right:4px;">{{ kw }}</span>
+                {% endfor %}
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        {% if project.date %}
+        <small class="text-muted">{{ project.date | date: "%B %Y" }}</small>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endunless %}
+{% endfor %}
+
+</div><!-- #projects-container -->
+
+<div id="no-results" style="display:none; padding:20px 0;">
+  <em>No projects match the selected keyword.</em>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var currentKeyword = 'all';
+  var currentGroup   = 'none';
+
+  /* ---- helpers ---- */
+  function getCards() {
+    return Array.from(document.querySelectorAll('.project-card'));
+  }
+
+  function applyFilters() {
+    var cards = getCards();
+    var visible = [];
+
+    cards.forEach(function (card) {
+      var kws  = card.getAttribute('data-keywords') || '';
+      var show = (currentKeyword === 'all') || (kws.indexOf(currentKeyword.toLowerCase()) !== -1);
+      card.style.display = show ? '' : 'none';
+      if (show) visible.push(card);
+    });
+
+    // Show/hide empty-state message
+    document.getElementById('no-results').style.display = visible.length === 0 ? '' : 'none';
+
+    applyGrouping(visible);
+  }
+
+  function applyGrouping(visibleCards) {
+    // Remove existing group headers
+    document.querySelectorAll('.project-group-header').forEach(function (el) { el.remove(); });
+
+    if (currentGroup === 'none') return;
+
+    var attr = currentGroup === 'service_type' ? 'data-service' : 'data-sector';
+    var lastGroup = null;
+
+    visibleCards.forEach(function (card) {
+      var groupVal = card.getAttribute(attr) || 'Uncategorized';
+      if (groupVal !== lastGroup) {
+        var header = document.createElement('h4');
+        header.className = 'project-group-header';
+        header.style.cssText = 'margin-top:32px; margin-bottom:8px; color:#052049;';
+        header.textContent = groupVal;
+        card.parentNode.insertBefore(header, card);
+        lastGroup = groupVal;
+      }
+    });
+  }
+
+  /* ---- keyword buttons ---- */
+  document.querySelectorAll('.keyword-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.keyword-btn').forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentKeyword = this.getAttribute('data-keyword');
+      applyFilters();
+    });
+  });
+
+  /* ---- grouping buttons ---- */
+  document.querySelectorAll('.group-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.group-btn').forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentGroup = this.getAttribute('data-group');
+      applyFilters();
+    });
+  });
+
+  /* initial render */
+  applyFilters();
+});
+</script>
+
+<style>
+.project-controls .btn {
+  margin-right: 4px;
+}
+.project-controls .btn.active {
+  background-color: #052049;
+  color: #fff;
+  border-color: #052049;
+}
+.project-card {
+  margin-bottom: 8px;
+}
+</style>
