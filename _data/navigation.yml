@@ -22,9 +22,6 @@
   link: "/courses"
   group: courses
 
-- name: about
-  link: "/philosophy"
-  group: about
 
 - name: news
   link: "/news"
@@ -37,6 +34,10 @@
 - name: contact
   link: "/contact"
   group: contact
+
+- name: about
+  link: "/about"
+  group: about
 
 # - name: private
 #   link: "https://sites.google.com/fraserlab.com/fraserlab-private/"
