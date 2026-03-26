@@ -1,7 +1,7 @@
 ---
-title: Fraser Lab Compact, Philosophy, and Resources
+title: About
 layout: default
-group: philosophy
+group: about
 ---
 
 {% include carousel.html height="40" unit="%" duration="5" filter="img/members/drawings/members/" controlposition="90%" indicatorposition="90%" %}
@@ -10,6 +10,7 @@ group: philosophy
 
 {% for item in site.data.philosophy %}
 {% if item.id == "overview" %}
+
 ## <a id="{{item.id}}"></a>{{item.title}}
 
 {{item.body}}
@@ -41,6 +42,7 @@ group: philosophy
 
 ---
 {% else %}
+
 ## <a id="{{item.id}}"></a>{{item.title}}
 
 {{item.body}}

@@ -22,9 +22,9 @@
   link: "/courses"
   group: courses
 
-- name: philosophy
+- name: about
   link: "/philosophy"
-  group: philosophy
+  group: about
 
 - name: news
   link: "/news"

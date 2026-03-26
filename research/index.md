@@ -7,7 +7,9 @@ group: research
 
 # Our research
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sapien sem, gravida sodales eleifend iaculis, efficitur quis tortor. Sed lacus urna, malesuada facilisis hendrerit quis, fringilla a lorem. Curabitur tincidunt arcu nec ante dapibus porttitor. Nam sit amet purus gravida, scelerisque ante eu, pulvinar lectus. Nullam sagittis feugiat ex, nec posuere urna volutpat ac. Aliquam fringilla rutrum leo sed sodales. Aenean velit leo, tempus id tincidunt quis, ultrices vitae nulla. Maecenas faucibus lobortis interdum. Nam sapien arcu, auctor quis posuere in, vehicula at nunc. Aenean lectus justo, ullamcorper id pretium sit amet, blandit a lectus.
+Our research advances geotechnical understanding and practice through the integration of novel data acquisition techniques, advanced data analytics, and computational methods. We develop innovative approaches to enhance the characterization, modeling, and performance assessment of ground and infrastructure systems.  
+
+Our work spans multiple domains and scales, from the micro scale (e.g., constitutive modeling of granular materials), to the meso scale (e.g., geotechnical engineering and construction system behavior), and up to the macro or regional scale (e.g., hazard characterization and risk assessment).
 
 # Heading 1
 

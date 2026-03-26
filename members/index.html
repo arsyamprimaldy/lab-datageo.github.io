@@ -1,125 +1,107 @@
 ---
-title: Lab DataGeo Member
+title: Lab Data dan Komputasi Geoteknik
 layout: members
 group: members
 ---
 
-<h1>Lab DataGeo Members</h1>
+<h1>Lab Data dan Komputasi Geoteknik Members</h1>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sapien sem, gravida sodales eleifend iaculis,
 efficitur quis tortor. Sed lacus urna, malesuada facilisis hendrerit quis, fringilla a lorem.
 
 {% assign pi_members = "" | split: "" %}
 {% for member in site.members %}
+{% if member.enddate != empty and member.startdate.size == member.enddate.size %}
+{% assign last_enddate = member.enddate | last %}
+{% assign enddate_seconds = last_enddate | date: "%s" %}
+{% assign now_seconds = "now" | date: "%s" %}
+{% if enddate_seconds < now_seconds %} {% continue %} {% endif %} {% endif %} {% unless member.position
+  contains "Principal" %} {% continue %} {% endunless %} {% assign pi_members=pi_members | push: member %} {% endfor %}
+  {% if pi_members.size> 0 %}
+  <h4>Principal</h4>
+  {% for member in pi_members %}
+  {% include member_card.html member=member %}
+  {% endfor %}
+  {% endif %}
+
+  {% assign doctoral_members = "" | split: "" %}
+  {% for member in site.members %}
   {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
+  {% assign last_enddate = member.enddate | last %}
+  {% assign enddate_seconds = last_enddate | date: "%s" %}
+  {% assign now_seconds = "now" | date: "%s" %}
+  {% if enddate_seconds < now_seconds %} {% continue %} {% endif %} {% endif %} {% unless member.position
+    contains "Doctoral Student" %} {% continue %} {% endunless %} {% assign doctoral_members=doctoral_members | push:
+    member %} {% endfor %} {% if doctoral_members.size> 0 %}
+    <h4>Doctoral Students</h4>
+    {% for member in doctoral_members %}
+    {% include member_card.html member=member %}
+    {% endfor %}
+    {% endif %}
+
+    {% assign grad_members = "" | split: "" %}
+    {% for member in site.members %}
+    {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
     {% assign last_enddate = member.enddate | last %}
     {% assign enddate_seconds = last_enddate | date: "%s" %}
     {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %}
-  {% endif %}
-  {% unless member.position contains "Principal Investigator" %} {% continue %} {% endunless %}
-  {% assign pi_members = pi_members | push: member %}
-{% endfor %}
-{% if pi_members.size > 0 %}
-<h4>Principal Investigator</h4>
-{% for member in pi_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
+    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %} {% endif %} {% unless member.position
+      contains "Graduate Student" %} {% continue %} {% endunless %} {% comment %} "Undergraduate Student"
+      contains "Graduate Student" as a substring, so exclude it explicitly {% endcomment %} {% if member.position
+      contains "Undergraduate Student" %} {% continue %} {% endif %} {% assign grad_members=grad_members | push: member
+      %} {% endfor %} {% if grad_members.size> 0 %}
+      <h4>Graduate Students</h4>
+      {% for member in grad_members %}
+      {% include member_card.html member=member %}
+      {% endfor %}
+      {% endif %}
 
-{% assign doctoral_members = "" | split: "" %}
-{% for member in site.members %}
-  {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %}
-  {% endif %}
-  {% unless member.position contains "Doctoral Student" %} {% continue %} {% endunless %}
-  {% assign doctoral_members = doctoral_members | push: member %}
-{% endfor %}
-{% if doctoral_members.size > 0 %}
-<h4>Doctoral Students</h4>
-{% for member in doctoral_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
+      {% assign undergrad_members = "" | split: "" %}
+      {% for member in site.members %}
+      {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
+      {% assign last_enddate = member.enddate | last %}
+      {% assign enddate_seconds = last_enddate | date: "%s" %}
+      {% assign now_seconds = "now" | date: "%s" %}
+      {% if enddate_seconds < now_seconds %} {% continue %} {% endif %} {% endif %} {% unless member.position
+        contains "Undergraduate Student" %} {% continue %} {% endunless %} {% assign undergrad_members=undergrad_members
+        | push: member %} {% endfor %} {% if undergrad_members.size> 0 %}
+        <h4>Undergraduate Students</h4>
+        {% for member in undergrad_members %}
+        {% include member_card.html member=member %}
+        {% endfor %}
+        {% endif %}
 
-{% assign grad_members = "" | split: "" %}
-{% for member in site.members %}
-  {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %}
-  {% endif %}
-  {% unless member.position contains "Graduate Student" %} {% continue %} {% endunless %}
-  {% comment %} "Undergraduate Student" contains "Graduate Student" as a substring, so exclude it explicitly {% endcomment %}
-  {% if member.position contains "Undergraduate Student" %} {% continue %} {% endif %}
-  {% assign grad_members = grad_members | push: member %}
-{% endfor %}
-{% if grad_members.size > 0 %}
-<h4>Graduate Students</h4>
-{% for member in grad_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
+        {% assign engineer_members = "" | split: "" %}
+        {% for member in site.members %}
+        {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
+        {% assign last_enddate = member.enddate | last %}
+        {% assign enddate_seconds = last_enddate | date: "%s" %}
+        {% assign now_seconds = "now" | date: "%s" %}
+        {% if enddate_seconds < now_seconds %} {% continue %} {% endif %} {% endif %} {% unless member.position
+          contains "Engineer" %} {% continue %} {% endunless %} {% assign engineer_members=engineer_members | push:
+          member %} {% endfor %} {% if engineer_members.size> 0 %}
+          <h4>Engineers</h4>
+          {% for member in engineer_members %}
+          {% include member_card.html member=member %}
+          {% endfor %}
+          {% endif %}
 
-{% assign undergrad_members = "" | split: "" %}
-{% for member in site.members %}
-  {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %}
-  {% endif %}
-  {% unless member.position contains "Undergraduate Student" %} {% continue %} {% endunless %}
-  {% assign undergrad_members = undergrad_members | push: member %}
-{% endfor %}
-{% if undergrad_members.size > 0 %}
-<h4>Undergraduate Students</h4>
-{% for member in undergrad_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
+          {% assign affiliate_members = "" | split: "" %}
+          {% for member in site.members %}
+          {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
+          {% assign last_enddate = member.enddate | last %}
+          {% assign enddate_seconds = last_enddate | date: "%s" %}
+          {% assign now_seconds = "now" | date: "%s" %}
+          {% if enddate_seconds < now_seconds %} {% continue %} {% endif %} {% endif %} {% unless member.position
+            contains "Affiliate" %} {% continue %} {% endunless %} {% assign affiliate_members=affiliate_members | push:
+            member %} {% endfor %} {% if affiliate_members.size> 0 %}
+            <h4>Affiliates</h4>
+            {% for member in affiliate_members %}
+            {% include member_card.html member=member %}
+            {% endfor %}
+            {% endif %}
 
-{% assign engineer_members = "" | split: "" %}
-{% for member in site.members %}
-  {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %}
-  {% endif %}
-  {% unless member.position contains "Engineer" %} {% continue %} {% endunless %}
-  {% assign engineer_members = engineer_members | push: member %}
-{% endfor %}
-{% if engineer_members.size > 0 %}
-<h4>Engineers</h4>
-{% for member in engineer_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
-
-{% assign affiliate_members = "" | split: "" %}
-{% for member in site.members %}
-  {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %} {% continue %} {% endif %}
-  {% endif %}
-  {% unless member.position contains "Affiliate" %} {% continue %} {% endunless %}
-  {% assign affiliate_members = affiliate_members | push: member %}
-{% endfor %}
-{% if affiliate_members.size > 0 %}
-<h4>Affiliates</h4>
-{% for member in affiliate_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
-
-<hr>
+            <hr>
 
             <div>
               {% assign stretch = 60 %}
@@ -158,10 +140,10 @@ efficitur quis tortor. Sed lacus urna, malesuada facilisis hendrerit quis, fring
                 {% endfor %}
                 {% assign i = i | plus: 1 %}
 
-                {% comment %} Principal Investigators are always rendered first {% endcomment %}
+                {% comment %} Principal are always rendered first {% endcomment %}
                 {% for member in sorted_people %}
                 {% assign pos_lower = member.position | downcase %}
-                {% unless pos_lower contains "principal investigator" %}{% continue %}{% endunless %}
+                {% unless pos_lower contains "principal" %}{% continue %}{% endunless %}
                 {% assign tenures = member.startdate.size | minus: 1 %}
                 {% for tenure in (0..tenures) %}
                 {% assign startyear = member.startdate[tenure] | date: "%Y" | minus: yearoffset %}
@@ -195,7 +177,7 @@ efficitur quis tortor. Sed lacus urna, malesuada facilisis hendrerit quis, fring
                 {% comment %} All other members sorted by start date {% endcomment %}
                 {% for member in sorted_people %}
                 {% assign pos_lower = member.position | downcase %}
-                {% if pos_lower contains "principal investigator" %}{% continue %}{% endif %}
+                {% if pos_lower contains "principal" %}{% continue %}{% endif %}
                 {% assign tenures = member.startdate.size | minus: 1 %}
                 {% for tenure in (0..tenures) %}
                 {% assign startyear = member.startdate[tenure] | date: "%Y" | minus: yearoffset %}
@@ -217,8 +199,8 @@ efficitur quis tortor. Sed lacus urna, malesuada facilisis hendrerit quis, fring
                   position {% assign position=member.timeline_group | downcase %} {% elsif member.timeline_positions %}
                   #all search strings in following section must be lowercase or it will not find matches {% assign
                   position=member.timeline_positions[tenure] | downcase %} {% else %} {% assign position=member.position
-                  | downcase %} {% endif %} {% if position contains "principal investigator" %} {% assign color="red" %}
-                  {% elsif position contains "doctoral student" or position contains "postdoctoral" %} {% assign
+                  | downcase %} {% endif %} {% if position contains "principal" %} {% assign color="red" %} {% elsif
+                  position contains "doctoral student" or position contains "postdoctoral" %} {% assign
                   color="darkorange" %} {% elsif position contains "undergraduate student" %} {% assign color="blue" %}
                   {% elsif position contains "graduate student" %} {% assign color="gold" %} {% elsif position
                   contains "engineer" or position contains "staff scientist" or position contains "programmer" or
@@ -245,7 +227,7 @@ efficitur quis tortor. Sed lacus urna, malesuada facilisis hendrerit quis, fring
                   fill="red" />
                 <text x="{{ fontsize | times: 0.25 | plus: legendboxsize | plus: xposition }}"
                   y="{{ fontsize | times: 0.75 | plus: legendboxsize | times: 0.5 | plus: yposition }}"
-                  font-family="sans-serif" font-size="{{ fontsize }}" stroke="black">Principal Investigator</text>
+                  font-family="sans-serif" font-size="{{ fontsize }}" stroke="black">Principal</text>
                 {% assign yposition = yposition | plus: legendboxspacing %}
                 <rect x="{{ xposition }}" y="{{ yposition }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}"
                   fill="darkorange" />
