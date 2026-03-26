@@ -49,3 +49,5 @@ collections:
                 output: true
         authors:
                 output: true
+        research_themes:
+                output: false

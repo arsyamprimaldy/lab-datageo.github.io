@@ -1,0 +1,148 @@
+---
+title: Research
+layout: default
+group: research
+---
+
+<h1>Our Research</h1>
+
+<h2>Overview</h2>
+
+<p>
+Our research advances geotechnical understanding and practice through the integration of novel
+data acquisition techniques, advanced data analytics, and computational methods. We develop
+innovative approaches to enhance the characterization, modeling, and performance assessment of
+ground and infrastructure systems.
+</p>
+
+<p>
+Our work spans multiple domains and scales, from the micro scale (e.g., constitutive modeling of
+granular materials), to the meso scale (e.g., geotechnical engineering and construction system
+behavior), and up to the macro or regional scale (e.g., hazard characterization and risk
+assessment).
+</p>
+
+<hr>
+
+<h2>Research Themes</h2>
+
+<div class="row">
+{% assign sorted_themes = site.research_themes | sort: "order" %}
+{% for theme in sorted_themes %}
+  {% unless theme.path contains "_template" %}
+<div class="col-md-6 mb-4">
+  <div class="card h-100 shadow-sm">
+    {% if theme.image %}
+    <img src="{{ theme.image }}" class="card-img-top" alt="{{ theme.title }}" style="height:180px; object-fit:cover;">
+    {% endif %}
+    <div class="card-body">
+      <span class="badge badge-primary mb-2" style="background-color:#052049;">{{ theme.scale }}</span>
+      <h5 class="card-title">{{ theme.title }}</h5>
+      <p class="card-text text-muted" style="font-size:0.92rem;">{{ theme.content | strip_html }}</p>
+      {% if theme.keywords %}
+      <div>
+        {% for kw in theme.keywords %}
+        <span class="badge badge-secondary" style="margin-right:3px; font-size:0.78rem;">{{ kw }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if theme.publication_link and theme.publication_link != "" %}
+      <a href="{{ theme.publication_link }}" class="btn btn-sm btn-outline-primary mt-3">Related Publications &rarr;</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+  {% endunless %}
+{% endfor %}
+</div>
+
+<hr>
+
+<h2>Funded Research Projects</h2>
+
+<p class="text-muted">Grants, institutional funding, and external collaborations supporting our research.</p>
+
+{% for project in site.data.research.funded_projects %}
+<div class="card mb-4 shadow-sm">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-9">
+        <h5 class="card-title mb-1">{{ project.title }}</h5>
+        <p class="text-muted mb-2" style="font-size:0.88rem;">
+          <strong>Funder:</strong> {{ project.funder }}
+          {% if project.scheme %}&ensp;|&ensp;<strong>Scheme:</strong> {{ project.scheme }}{% endif %}
+          &ensp;|&ensp;<strong>Period:</strong> {{ project.period }}
+          {% if project.amount %}&ensp;|&ensp;<strong>Budget:</strong> {{ project.amount }}{% endif %}
+        </p>
+        <p class="card-text" style="font-size:0.92rem;">{{ project.description }}</p>
+        {% if project.investigators %}
+        <p class="mb-1" style="font-size:0.88rem;">
+          {% for inv in project.investigators %}
+          <span class="mr-3"><strong>{{ inv.role }}:</strong> {{ inv.name }}</span>
+          {% endfor %}
+        </p>
+        {% endif %}
+        {% if project.keywords %}
+        <div class="mt-2">
+          {% for kw in project.keywords %}
+          <span class="badge badge-secondary" style="margin-right:3px; font-size:0.78rem;">{{ kw }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-3 d-flex align-items-center justify-content-center">
+        <span class="badge badge-pill" style="background-color:#052049; color:#fff; font-size:0.85rem; padding:8px 14px;">
+          {{ project.type }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<hr>
+
+<h2>Student Research</h2>
+
+<p class="text-muted">Ongoing and recent thesis and research projects by our graduate and undergraduate students (S1 / S2 / S3).</p>
+
+<table class="table table-hover" style="font-size:0.92rem;">
+  <thead class="thead-light">
+    <tr>
+      <th>Title</th>
+      <th>Level</th>
+      <th>Student</th>
+      <th>Supervisor</th>
+      <th>Year</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for sr in site.data.research.student_research %}
+    <tr>
+      <td>
+        {{ sr.title }}
+        {% if sr.keywords %}
+        <br>
+        {% for kw in sr.keywords %}
+        <span class="badge badge-secondary" style="font-size:0.75rem; margin-top:3px;">{{ kw }}</span>
+        {% endfor %}
+        {% endif %}
+      </td>
+      <td><span class="badge badge-info" style="font-size:0.8rem;">{{ sr.level }}</span></td>
+      <td>{{ sr.student }}</td>
+      <td>{{ sr.supervisor }}</td>
+      <td>{{ sr.year }}</td>
+      <td>
+        {% if sr.status == "Ongoing" %}
+        <span class="badge badge-success">{{ sr.status }}</span>
+        {% elsif sr.status == "Completed" %}
+        <span class="badge badge-secondary">{{ sr.status }}</span>
+        {% else %}
+        {{ sr.status }}
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
