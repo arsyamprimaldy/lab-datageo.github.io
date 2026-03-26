@@ -1,0 +1,113 @@
+# Research data for the Lab Data dan Komputasi Geoteknik
+
+themes:
+  - title: "Constitutive Modeling of Granular Materials"
+    scale: "Micro scale"
+    description: >
+      We develop and calibrate advanced constitutive models for granular soils and rock, capturing
+      key mechanical responses including nonlinearity, anisotropy, and cyclic behavior. Our work
+      integrates laboratory element testing with numerical model implementation to support accurate
+      finite-element and finite-difference analyses.
+    image: "/static/img/research/constitutive-modeling.svg"
+    keywords:
+      - constitutive modeling
+      - granular materials
+      - soil mechanics
+      - numerical analysis
+
+  - title: "Site Characterization & Data Acquisition"
+    scale: "Micro–Meso scale"
+    description: >
+      We advance methods for subsurface characterization using in-situ testing (CPT, SPT, DMT, PMT)
+      and geophysical surveys. Our research focuses on data quality assessment, interpretation
+      frameworks, and machine-learning-assisted soil profiling to improve the reliability of site
+      investigation programs.
+    image: "/static/img/research/site-characterization.svg"
+    keywords:
+      - site investigation
+      - CPT
+      - in-situ testing
+      - data analytics
+
+  - title: "Geotechnical Engineering & Construction Systems"
+    scale: "Meso scale"
+    description: >
+      Our work examines the behavior of geotechnical structures and construction systems including
+      embankments, retaining walls, deep foundations, and ground improvement schemes. We combine
+      field monitoring, physical modeling, and numerical simulation to assess performance under
+      static and dynamic loading conditions.
+    image: "/static/img/research/geotechnical-systems.svg"
+    keywords:
+      - slope stability
+      - embankment
+      - deep foundation
+      - ground improvement
+
+  - title: "Hazard Characterization & Risk Assessment"
+    scale: "Macro / Regional scale"
+    description: >
+      We develop probabilistic frameworks for natural hazard characterization—including landslides,
+      liquefaction, and ground subsidence—at the regional scale. Our approaches integrate remote
+      sensing, GIS, and reliability methods to support land-use planning, early-warning systems,
+      and infrastructure resilience evaluation.
+    image: "/static/img/research/hazard-risk.svg"
+    keywords:
+      - landslide
+      - liquefaction
+      - risk assessment
+      - remote sensing
+
+funded_projects:
+  - title: "Development of a Data-Driven Framework for Regional Liquefaction Susceptibility Mapping"
+    type: "Funded Research"
+    funder: "Ministry of Education, Culture, Research and Technology (Kemdikbudristek) – DRTPM"
+    scheme: "Penelitian Dasar (PD)"
+    period: "2025–2026"
+    amount: "Rp 250,000,000"
+    investigators:
+      - role: "Principal Investigator"
+        name: "[PI Name]"
+      - role: "Co-Investigator"
+        name: "[Co-I Name]"
+    description: >
+      This project develops an integrated machine-learning and geostatistical framework for
+      mapping regional liquefaction susceptibility using publicly available CPT and geospatial
+      datasets. The outcomes include validated susceptibility maps and an open-source processing
+      pipeline for rapid regional assessments.
+    keywords:
+      - liquefaction
+      - machine learning
+      - regional mapping
+
+student_research:
+  - title: "Probabilistic Slope Stability Analysis Using Monte Carlo Simulation for Highway Embankments"
+    level: "S2 (Master's Thesis)"
+    student: "[Student Name]"
+    supervisor: "[Supervisor Name]"
+    year: "2025"
+    status: "Ongoing"
+    description: >
+      This thesis investigates the influence of soil parameter uncertainty on the reliability of
+      embankment slopes along national highway corridors. A Monte Carlo–based probabilistic
+      framework is implemented within a commercial FEM platform and validated against deterministic
+      limit-equilibrium results from field case studies.
+    keywords:
+      - slope stability
+      - probabilistic analysis
+      - embankment
+
+  - title: "Machine Learning-Based Soil Classification from CPT Data"
+    level: "S1 (Undergraduate Thesis)"
+    student: "[Student Name]"
+    supervisor: "[Supervisor Name]"
+    year: "2025"
+    status: "Ongoing"
+    description: >
+      This project applies supervised machine-learning classifiers (Random Forest, Gradient
+      Boosting) to automated soil behavior type classification using CPT data. The trained models
+      are benchmarked against established CPT-based classification charts and evaluated on
+      independent Indonesian test sites.
+    keywords:
+      - CPT
+      - machine learning
+      - soil classification

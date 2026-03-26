@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+  <rect width="600" height="300" fill="#1a1a3a"/>
+  <!-- Map background with contour lines -->
+  <ellipse cx="300" cy="155" rx="200" ry="120" fill="none" stroke="#2a4a8c" stroke-width="1.5" opacity="0.6"/>
+  <ellipse cx="300" cy="155" rx="150" ry="90" fill="none" stroke="#3a5aac" stroke-width="1.5" opacity="0.6"/>
+  <ellipse cx="300" cy="155" rx="100" ry="60" fill="none" stroke="#4a6acc" stroke-width="1.5" opacity="0.7"/>
+  <ellipse cx="300" cy="155" rx="60" ry="36" fill="#2a4a8c" opacity="0.4"/>
+  <ellipse cx="300" cy="155" rx="30" ry="18" fill="#3a5aac" opacity="0.5"/>
+  <!-- Hazard zone overlay -->
+  <path d="M 180 100 Q 240 70 310 90 Q 380 110 420 160 Q 440 200 400 230 Q 350 250 280 240 Q 200 230 170 180 Q 155 150 180 100 Z" 
+        fill="#e05030" opacity="0.2" stroke="#e05030" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <!-- Risk contours -->
+  <path d="M 200 120 Q 270 95 340 115 Q 390 135 405 175 Q 395 215 340 225 Q 270 235 210 210 Q 175 185 185 145 Q 190 128 200 120 Z" 
+        fill="none" stroke="#f0a500" stroke-width="1.5" opacity="0.6"/>
+  <!-- Location markers / infrastructure -->
+  <polygon points="300,130 306,145 290,145" fill="#ffffff" opacity="0.9"/>
+  <circle cx="240" cy="170" r="5" fill="#e05030" opacity="0.9"/>
+  <circle cx="360" cy="165" r="5" fill="#e05030" opacity="0.9"/>
+  <circle cx="300" cy="200" r="5" fill="#f0a500" opacity="0.9"/>
+  <!-- Compass rose -->
+  <g transform="translate(530,55)">
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#aaa" stroke-width="1.5"/>
+    <line x1="-18" y1="0" x2="18" y2="0" stroke="#aaa" stroke-width="1.5"/>
+    <polygon points="0,-18 -4,-8 4,-8" fill="#ffffff"/>
+    <text x="0" y="-22" fill="#ccc" font-family="sans-serif" font-size="11" text-anchor="middle">N</text>
+  </g>
+  <!-- Scale bar -->
+  <line x1="50" y1="265" x2="150" y2="265" stroke="#aaa" stroke-width="2"/>
+  <line x1="50" y1="260" x2="50" y2="270" stroke="#aaa" stroke-width="2"/>
+  <line x1="150" y1="260" x2="150" y2="270" stroke="#aaa" stroke-width="2"/>
+  <text x="100" y="285" fill="#ccc" font-family="sans-serif" font-size="11" text-anchor="middle">10 km</text>
+</svg>

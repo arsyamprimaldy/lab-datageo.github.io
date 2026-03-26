@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+  <rect width="600" height="300" fill="#1a3a5c"/>
+  <!-- Grid lines representing stress-strain space -->
+  <g stroke="#2a5a8c" stroke-width="1" opacity="0.5">
+    <line x1="60" y1="30" x2="60" y2="270"/>
+    <line x1="140" y1="30" x2="140" y2="270"/>
+    <line x1="220" y1="30" x2="220" y2="270"/>
+    <line x1="300" y1="30" x2="300" y2="270"/>
+    <line x1="380" y1="30" x2="380" y2="270"/>
+    <line x1="460" y1="30" x2="460" y2="270"/>
+    <line x1="540" y1="30" x2="540" y2="270"/>
+    <line x1="30" y1="60" x2="570" y2="60"/>
+    <line x1="30" y1="120" x2="570" y2="120"/>
+    <line x1="30" y1="180" x2="570" y2="180"/>
+    <line x1="30" y1="240" x2="570" y2="240"/>
+  </g>
+  <!-- Stress-strain curve -->
+  <path d="M 60 250 Q 150 250 200 200 Q 270 150 350 140 Q 430 130 520 135" 
+        fill="none" stroke="#4a90d9" stroke-width="3"/>
+  <!-- Yield surface ellipse -->
+  <ellipse cx="300" cy="150" rx="120" ry="70" fill="none" stroke="#f0a500" stroke-width="2" stroke-dasharray="6,3"/>
+  <!-- Scatter dots representing granular particles -->
+  <circle cx="280" cy="160" r="4" fill="#4a90d9" opacity="0.8"/>
+  <circle cx="310" cy="140" r="4" fill="#4a90d9" opacity="0.8"/>
+  <circle cx="295" cy="155" r="3" fill="#4a90d9" opacity="0.7"/>
+  <circle cx="320" cy="165" r="4" fill="#4a90d9" opacity="0.8"/>
+  <circle cx="270" cy="145" r="3" fill="#4a90d9" opacity="0.7"/>
+  <!-- Axes -->
+  <line x1="60" y1="260" x2="540" y2="260" stroke="#aaa" stroke-width="2"/>
+  <line x1="60" y1="260" x2="60" y2="40" stroke="#aaa" stroke-width="2"/>
+  <!-- Axis labels -->
+  <text x="300" y="290" fill="#ccc" font-family="sans-serif" font-size="14" text-anchor="middle">Strain ε</text>
+  <text x="25" y="155" fill="#ccc" font-family="sans-serif" font-size="14" text-anchor="middle" transform="rotate(-90,25,155)">Stress σ</text>
+</svg>
