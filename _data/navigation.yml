@@ -3,7 +3,7 @@
   group: home
 
 - name: about
-  link: "/about"
+  link: "/members"
   group: about
 
 - name: research

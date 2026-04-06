@@ -4,56 +4,54 @@ layout: members
 group: members
 ---
 
-<h1>Background</h1>
+<h3>Background</h3>
+<p>
+  Geotechnical engineering plays a critical role in the safety and performance of infrastructure systems, particularly
+  in regions characterized by complex geomaterials and exposure to natural hazards. At the same time, it is a major
+  source of uncertainty and unforeseen challenges, which can lead to construction risks, operational disruptions, and,
+  consequently, cost overruns or the loss of capital assets. Conventional approaches are often limited by simplified
+  assumptions, sparse data, and the inherent uncertainty of subsurface conditions.
+</p>
+<p>
+  Rapid development introduces greater complexity in engineering challenges while also increasing exposure to
+  natural
+  hazards, thereby demanding more accurate, reliable, and scalable solutions. Advances in data acquisition technologies,
+  data analytics, and computational methods provide new opportunities to better characterize ground conditions,
+  understand the behavior of engineered systems, and support more robust decision-making. This lab group was established
+  to address these challenges by integrating fundamental geotechnical engineering with data-driven and computational
+  approaches. The aim is to bridge the gap between research and practice, enabling improved understanding, engineering
+  design, and risk-informed decision-making for complex ground and infrastructure systems.
+</p>
+<hr>
 
-Geotechnical engineering plays a critical role in the safety and performance of infrastructure systems, particularly
-in regions characterized by complex geomaterials and exposure to natural hazards. At the same time, it is a major
-source of uncertainty and unforeseen challenges, which can lead to construction risks, operational disruptions, and,
-consequently, cost overruns or the loss of capital assets. Conventional approaches are often limited by simplified
-assumptions, sparse data, and the inherent uncertainty of subsurface conditions.
-<br>
-Rapid development introduces greater complexity in engineering challenges while also increasing exposure to natural
-hazards, thereby demanding more accurate, reliable, and scalable solutions. Advances in data acquisition technologies,
-data analytics, and computational methods provide new opportunities to better characterize ground conditions,
-understand the behavior of engineered systems, and support more robust decision-making. This lab group was established
-to address these challenges by integrating fundamental geotechnical engineering with data-driven and computational
-approaches. The aim is to bridge the gap between research and practice, enabling improved understanding, engineering
-design, and risk-informed decision-making for complex ground and infrastructure systems.
-<br>
-<h1>Lab DataGeo Members</h1>
+
 
 {% assign pi_members = "" | split: "" %}
 {% for member in site.members %}
-  {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %}{% continue %}{% endif %}
+{% if member.enddate != empty and member.startdate.size == member.enddate.size %}
+{% assign last_enddate = member.enddate | last %}
+{% assign enddate_seconds = last_enddate | date: "%s" %}
+{% assign now_seconds = "now" | date: "%s" %}
+{% if enddate_seconds < now_seconds %}{% continue %}{% endif %} {% endif %} {% unless member.position
+  contains "Principal" %}{% continue %}{% endunless %} {% assign pi_members=pi_members | push: member %} {% endfor %} {%
+  if pi_members.size> 0 %}
+  <h4>Principal</h4>
+  {% for member in pi_members %}
+  {% include member_card.html member=member %}
+  {% endfor %}
   {% endif %}
-  {% unless member.position contains "Principal" %}{% continue %}{% endunless %}
-  {% assign pi_members = pi_members | push: member %}
-{% endfor %}
-{% if pi_members.size > 0 %}
-<h4>Principal</h4>
-{% for member in pi_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
 
-{% assign other_members = "" | split: "" %}
-{% for member in site.members %}
+  {% assign other_members = "" | split: "" %}
+  {% for member in site.members %}
   {% if member.enddate != empty and member.startdate.size == member.enddate.size %}
-    {% assign last_enddate = member.enddate | last %}
-    {% assign enddate_seconds = last_enddate | date: "%s" %}
-    {% assign now_seconds = "now" | date: "%s" %}
-    {% if enddate_seconds < now_seconds %}{% continue %}{% endif %}
-  {% endif %}
-  {% if member.position contains "Principal" %}{% continue %}{% endif %}
-  {% assign other_members = other_members | push: member %}
-{% endfor %}
-{% if other_members.size > 0 %}
-<h4>Member</h4>
-{% for member in other_members %}
-{% include member_card.html member=member %}
-{% endfor %}
-{% endif %}
+  {% assign last_enddate = member.enddate | last %}
+  {% assign enddate_seconds = last_enddate | date: "%s" %}
+  {% assign now_seconds = "now" | date: "%s" %}
+  {% if enddate_seconds < now_seconds %}{% continue %}{% endif %} {% endif %} {% if member.position contains "Principal"
+    %}{% continue %}{% endif %} {% assign other_members=other_members | push: member %} {% endfor %} {% if
+    other_members.size> 0 %}
+    <h4>Member</h4>
+    {% for member in other_members %}
+    {% include member_card.html member=member %}
+    {% endfor %}
+    {% endif %}

@@ -9,9 +9,9 @@
 
     {{include.member.position | markdownify | remove: '<p>' | remove: '</p>' }} <br>
 
-    {% if include.member.interest %}
+    <!-- {% if include.member.interest %}
     <em>{{include.member.interest}}</em> <br>
-    {% endif %}
+    {% endif %} -->
 
     <em>{{include.member.email}}</em> <br>
     {% if include.member.website %}
@@ -42,14 +42,6 @@
     <a href="https://www.ncbi.nlm.nih.gov/myncbi/{{include.member.nih}}/bibliography/public/"> {% if
       include.member.timeline_name %}{{ include.member.timeline_name }}{% else %}{{ include.member.name | split: " " |
       first }}{% endif %}'s Publications </a> <br>
-    {% endif %}
-    {% if include.member.twitter %}
-    <a href="https://twitter.com"><img class="inline-block mem-icon" src="/static/img/logo/twitter_logo.svg"></a>
-    <a href="https://twitter.com/{{include.member.twitter}}"> @{{include.member.twitter}} </a> <br>
-    {% endif %}
-    {% if include.member.bsky %}
-    <a href="https://bsky.app/"><img class="inline-block mem-icon" src="/static/img/logo/bsky_logo.svg"></a>
-    <a href="https://bsky.app/profile/{{include.member.bsky}}"> {{include.member.bsky}} </a> <br>
     {% endif %}
     {% if include.member.github %}
     <a href="https://github.com"><img class="inline-block mem-icon" src="/static/img/logo/github_logo.svg"></a>
