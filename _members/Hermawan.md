@@ -4,7 +4,7 @@ startdate: [2024-12-01]
 enddate: []
 image: /static/img/members/hermawan.jpg
 # altimage: /static/img/members/Fraser_pb.jpg
-position: Graduate Students
+position: Research Assistant
 #current:
 interest: GeoHazard Assesment, Soil-Structure Interaction, and Earthquake Engineering. 
 email: 25025073 (at) mahasiswa.itb.ac.id
