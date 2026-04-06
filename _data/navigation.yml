@@ -2,30 +2,29 @@
   link: "/"
   group: home
 
+- name: about
+  link: "/about"
+  group: about
+
 - name: research
   link: "/research"
   group: research
-
-- name: publications
-  link: "/publications"
-  group: publications
 
 - name: projects
   link: "/projects"
   group: projects
 
-- name: members
-  link: "/members"
-  group: members
+- name: publications
+  link: "/publications"
+  group: publications
 
 - name: teaching
   link: "/courses"
   group: courses
 
-
-- name: news
-  link: "/news"
-  group: news
+# - name: news
+#   link: "/news"
+#   group: news
 
 # - name: join
 #   link: "/join"
