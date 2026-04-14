@@ -1,4 +1,4 @@
-<img width="2559" height="467" alt="image" src="https://github.com/user-attachments/assets/dc1504dc-84c6-4594-9fbb-9381e4236f99" />---
+---
 name: Arsya Maulana Primaldy
 startdate: [2026-02-01]
 enddate: []
